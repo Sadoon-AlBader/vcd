@@ -4,9 +4,12 @@ VCD file command line viewer
 
 Lightweight command line remplacement to GTKWave (16801 KB vs 6 KB)
 
+Forked to support SystemVerilog.
+
 ## Download
 
-Windows, Linux and MacOS binaries are available in the [releases page](../../releases)
+No binary releases available, compile it yourself :)
+Just type make.
 
 ## Usage
 
@@ -26,7 +29,6 @@ Usage: vcd [OPTION]... [FILE]
 ```bash
 vcd sim_fifo.vcd
 vcd  < in.vcd > out.txt
-vcd -i=sim_fifo.vcd -w=1 -r=0 -s=fifo1
 ```
 
 # Preview
