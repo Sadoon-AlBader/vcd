@@ -85,7 +85,7 @@ void parseInst(Parameters*params,Parser*p){
 	if(!strcmp("var",token)){
 		char id_str[4];
 		Channel chan={};
-		fscanf(params->fin," reg %d %3[^ ] %"TXT(MAX_NAME)"[^ $]",&(chan.size),id_str,chan.name);
+		fscanf(params->fin," wire %d %3[^ ] %"TXT(MAX_NAME)"[^]$]",&(chan.size),id_str,chan.name);
 		int id=char2id(id_str);
 		p->ch[id]=chan;//printf("size=%i <%c> name=<%s>\n",size,id,data);
 		p->ch[id].scope=p->cur_scopes;
@@ -168,19 +168,19 @@ void parseFile(Parameters*params,Parser*p){
 
 void showVertical(Parameters*params,Parser*p){
 	int chan,smpl,w;
-	
+
 	if(p->nb      )fprintf(params->fout,"%i samples",p->nb);
 	if(p->date [0])fprintf(params->fout," / %s",p->date);
 	if(p->scale[0])fprintf(params->fout," / %s",p->scale);
 	fprintf(params->fout,"\n");
-	
+
 	for(chan=0;chan < COUNT(p->ch);chan++){
 		if(!p->ch[chan].size)continue;//skip empty ch
 		if(params->scope && (!p->ch[chan].scope || !strstr(params->scope,p->scopes[p->ch[chan].scope])))
 			continue;//skip root node or unrelated node if scope-only wanted
 		if((!chan && p->ch[chan].scope) || (chan>0 && (p->ch[chan].scope!=p->ch[chan-1].scope)))
 			fprintf(params->fout,"┌── %s\n",p->ch[chan].scope?p->scopes[p->ch[chan].scope]:"");
-		
+
 		fprintf(params->fout,"%s %*.*s[%2i]: ",p->ch[chan].scope?"│":" ",params->colsize,params->colsize,p->ch[chan].name,p->ch[chan].size);
 		for(smpl=0;smpl < p->nb ;smpl++){
 			char     type = p->ch[chan].type[smpl];

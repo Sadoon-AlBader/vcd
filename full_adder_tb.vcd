@@ -1,0 +1,38 @@
+$date
+	Mon Jul  6 02:50:33 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module full_adder_tb $end
+$scope module FA_tb $end
+$var wire 8 ! i_a [7:0] $end
+$var wire 8 " i_b [7:0] $end
+$var wire 1 # i_carry $end
+$var wire 8 $ o_sum [7:0] $end
+$var wire 1 % o_carry $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0%
+b0 $
+0#
+b0 "
+b0 !
+$end
+#20
+b1010000 $
+b110010 "
+b11110 !
+#40
+b11111111 $
+1%
+1#
+b11111111 "
+b11111111 !
+#60
