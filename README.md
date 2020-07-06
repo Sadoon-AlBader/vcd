@@ -3,6 +3,7 @@
 VCD file command line viewer
 
 Lightweight command line remplacement to GTKWave (16801 KB vs 6 KB)
+
 Forked to support SystemVerilog.
 
 ## Download
