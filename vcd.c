@@ -98,6 +98,8 @@ void parseInst(Parameters*params,Parser*p){
 	else if(!strcmp("upscope",token))       {fscanf(params->fin,"\n%*[^$]");p->cur_scopes=0;}/*back to root */
 	else if(!strcmp("enddefinitions",token)){fscanf(params->fin,"\n%*[^$]");}
 	else if(!strcmp("end",token))           {}
+	else if(!strcmp("dumpvars",token))      {}
+	else if(!strcmp("]",token))      {}
 	else {printf("unknow token : %s\n",token);}
 }
 
@@ -160,6 +162,8 @@ void parseFile(Parameters*params,Parser*p){
 			parseData(params,p);
 		}else if(c=='#'){
 			parseTime(params,p);
+		}else if(c==']'){
+			//do nothing
 		}else{
 			fprintf(stderr,"unknow char : %c\n",c);
 		}
